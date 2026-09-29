@@ -1,0 +1,6 @@
+{
+  "name": "BHUMI-NEXUS: Evidence-to-Policy Intelligence for Land Governance",
+  "description": "Evidence-to-Policy Intelligence Platform for Land Governance connecting fragmented data, research, GIS, policy simulation, and impact monitoring (SIH 2026 PS 26019).",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

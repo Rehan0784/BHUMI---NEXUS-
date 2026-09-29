@@ -1,0 +1,88 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "User profile with role-based access attributes",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "displayName": { "type": "string" },
+        "email": { "type": "string" },
+        "role": { "type": "string", "enum": ["PUBLIC", "OFFICER", "POLICY_MAKER", "RESEARCHER"] },
+        "organization": { "type": "string" },
+        "department": { "type": "string" },
+        "photoURL": { "type": "string" },
+        "createdAt": { "type": "string" },
+        "lastLogin": { "type": "string" }
+      },
+      "required": ["userId", "role"]
+    },
+    "SavedFinding": {
+      "title": "SavedFinding",
+      "description": "Saved evidence finding or AI research brief",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "question": { "type": "string" },
+        "answer": { "type": "string" },
+        "confidence": { "type": "number" },
+        "sources": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "userId", "question", "answer"]
+    },
+    "CustomScenario": {
+      "title": "CustomScenario",
+      "description": "User created policy simulation scenario",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "name": { "type": "string" },
+        "regionName": { "type": "string" },
+        "agriculturalProtection": { "type": "number" },
+        "greenBufferKm": { "type": "number" },
+        "urbanGrowthCap": { "type": "number" },
+        "horizonYears": { "type": "number" },
+        "croplandPreservedKm2": { "type": "number" },
+        "floodRiskReductionPct": { "type": "number" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "userId", "name"]
+    },
+    "ResearchProject": {
+      "title": "ResearchProject",
+      "description": "User research dossier project in workspace",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "title": { "type": "string" },
+        "notes": { "type": "string" },
+        "papersCount": { "type": "number" },
+        "datasetsCount": { "type": "number" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["id", "userId", "title"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "UserProfile",
+      "description": "Individual user profiles and role assignments"
+    },
+    "/users/{userId}/findings/{findingId}": {
+      "schema": "SavedFinding",
+      "description": "User saved research findings"
+    },
+    "/users/{userId}/scenarios/{scenarioId}": {
+      "schema": "CustomScenario",
+      "description": "User custom policy scenarios"
+    },
+    "/users/{userId}/projects/{projectId}": {
+      "schema": "ResearchProject",
+      "description": "User research projects"
+    }
+  }
+}
